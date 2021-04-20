@@ -1,0 +1,26 @@
+{
+  "name": "team-profile-gen",
+  "version": "1.0.0",
+  "description": "Team builder application to track employee information",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "jest --verbose test/*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/T-Heier/team-profile-gen.git"
+  },
+  "author": "Trent Heier",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/T-Heier/team-profile-gen/issues"
+  },
+  "homepage": "https://github.com/T-Heier/team-profile-gen#readme",
+  "dependencies": {
+    "inquirer": "^8.0.0",
+    "jest": "^26.6.3"
+  }
+}
