@@ -122,6 +122,18 @@ menu = () => {
             newTeamMember();
         })
     }
+    newTeamMember = () => {
+        inquirer.prompt(addTeamMember).then(() => {
+            
+            if (addTeamMember.teamMemberList == "Engineer") {
+                createEngineer();
+            } else {
+                if (addTeamMember.teamMemberList == "Intern") {
+                    createIntern();
+                }
+            }
+        })
+    }
     createEngineer = () => {
         inquirer.prompt(engQuestions).then(({name, id, email, github}) => {
             const engineer = new Engineer(name, id, email, github);
@@ -131,23 +143,19 @@ menu = () => {
 
     createIntern = () => {
         inquirer.prompt(internQuestions).then(({name, id, email, school}) => {
-
+            const intern = new Intern(name, id, email, school);
+            console.log(intern)
         })
     }
 
-    newTeamMember = () => {
-        inquirer.prompt(addTeamMember)
-        if (addTeamMember == "Engineer") {
-            createEngineer();
-        } else if (addTeamMember == "Intern") {
-            createIntern();
-        }
-    }
+
 
 
     createManager();
-    
 }
 
+    
 
-menu();
+
+
+menu()
