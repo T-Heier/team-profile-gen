@@ -1,7 +1,7 @@
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
-const generateHTML = require('./dist/generateHTML')
+const generateHTML = require('./lib/generateHTML')
 const inquirer = require('inquirer');
 const path = require('path');
 const fs = require('fs');
@@ -112,7 +112,6 @@ menu = () => {
         inquirer.prompt(manQuestions).then(({name, id, email, officeNumber}) => {
             const manager = new Manager(name, id, email, officeNumber)
             employees.push(manager)
-            console.log(manager);
             newTeamMember();
         })
     }
@@ -126,7 +125,7 @@ menu = () => {
                 createIntern();
             } else {
                 teamMemberList == "No more team members"
-                // run generate html script
+                writeHTML();
             }
         })
     }
@@ -134,7 +133,6 @@ menu = () => {
     createEngineer = () => {
         inquirer.prompt(engQuestions).then(({name, id, email, github}) => {
             const engineer = new Engineer(name, id, email, github);
-            console.log(engineer);
             employees.push(engineer)
             newTeamMember();
         })
@@ -143,7 +141,6 @@ menu = () => {
     createIntern = () => {
         inquirer.prompt(internQuestions).then(({name, id, email, school}) => {
             const intern = new Intern(name, id, email, school);
-            console.log(intern)
             employees.push(intern)
             newTeamMember();
         })
@@ -156,9 +153,11 @@ menu()
 
 
 function writeHTML () {
-    fs.writeFile(index.html, (generateHTML(employees)), (err) => {
+    let fileName = 'index.html'
+    generateHTML(employees)
+    fs.writeFile(fileName, (generateHTML(employees)), (err) => {
         if (err) {
-            console.error(err)
+          console.error(err)
         }
     });
 }
