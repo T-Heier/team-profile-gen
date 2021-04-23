@@ -2,12 +2,10 @@ const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const generateHTML = require('./lib/generateHTML')
-const fuckyou = require("./lib/fuckyou")
 const inquirer = require('inquirer');
 const path = require('path');
 const fs = require('fs');
 const { create } = require('domain');
-const createCards = require('./lib/fuckyou');
 
 
 const manQuestions = [
@@ -161,7 +159,5 @@ function writeHTML () {
         if (err) {
           console.error(err)
         }
-        createCards(employees);
     });
 }
-
