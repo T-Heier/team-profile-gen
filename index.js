@@ -159,5 +159,6 @@ function writeHTML () {
         if (err) {
           console.error(err)
         }
+        return
     });
 }
